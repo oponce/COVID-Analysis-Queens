@@ -1,4 +1,4 @@
-#load necessary libraries.
+#import necessary libraries.
 library('tidyverse')
 library('janitor')
 
@@ -37,3 +37,60 @@ borough_covid_data <- coronavirus_data %>%
   
 write_csv(queens_covid_data, "Queens COVID data by zipcode.csv")
 write_csv(borough_covid_data, "Borough COVID data.csv")
+
+#create a graph comparing the boroughs' case counts.
+boro_comparison_case_counts <- ggplot(borough_covid_data) +
+  aes(x=BOROUGH_GROUP, y=TOTAL_COVID_CASE_COUNT, fill=BOROUGH_GROUP) +
+  # Note these arguments inside 'geom_bar' :
+  ### stat = "identity" allows us to have both an x and y aestethic with our bar graph
+  ### position = "dodge" puts the different colored bars side-by-side
+  geom_bar(stat = "identity", position = "dodge")
+
+boro_comparison_case_counts
+
+#create a graph comparing the boroughs' death counts (probable and confirmed).
+boro_comparison_death_counts <- ggplot(borough_covid_data) +
+  aes(x=BOROUGH_GROUP, y=TOTAL_COVID_DEATH_COUNT, fill=BOROUGH_GROUP) +
+  geom_bar(stat = "identity", position = "dodge")
+
+boro_comparison_death_counts
+
+#create a graph comparing the boroughs' covid positive rate (probable and confirmed).
+boro_comparison_COVID_rates <- ggplot(borough_covid_data) +
+  aes(x=BOROUGH_GROUP, y=BOROUGH_COVID_RATE, fill=BOROUGH_GROUP) +
+  geom_bar(stat = "identity", position = "dodge")
+
+#create a graph comparing the boroughs' confirmed covid death rate
+boro_comparison_confirmed_COVID_deat_rates <- ggplot(borough_covid_data) +
+  aes(x=BOROUGH_GROUP, y=BOROUGH_CONFIRMED_DEATH_RATE, fill=BOROUGH_GROUP) +
+  geom_bar(stat = "identity", position = "dodge")
+
+boro_comparison_confirmed_COVID_deat_rates
+
+#create a graph comparing the boroughs' confirmed covid death rate
+boro_comparison_COVID_positive_tests <- ggplot(borough_covid_data) +
+  aes(x=BOROUGH_GROUP, y=BOROUGH_PERCENT_POSITIVE, fill=BOROUGH_GROUP) +
+  geom_bar(stat = "identity", position = "dodge")
+
+boro_comparison_COVID_positive_tests
+
+#create a graph comparing the boroughs' confirmed covid death rate
+boro_comparison_COVID_positive_tests <- ggplot(borough_covid_data) +
+  aes(x=BOROUGH_GROUP, y=BOROUGH_PERCENT_POSITIVE, fill=BOROUGH_GROUP) +
+  geom_bar(stat = "identity", position = "dodge")
+
+boro_comparison_COVID_positive_tests
+
+#create a graph comparing the boroughs' the number of covid tests in each borough
+boro_comparison_COVID_tests <- ggplot(borough_covid_data) +
+  aes(x=BOROUGH_GROUP, y=BOROUGH_COVID_TESTS, fill=BOROUGH_GROUP) +
+  geom_bar(stat = "identity", position = "dodge")
+
+boro_comparison_COVID_tests
+
+#create a graph comparing the boroughs' populations
+boro_comparison_pop <- ggplot(borough_covid_data) +
+  aes(x=BOROUGH_GROUP, y=TOTAL_POP_DENOMINATOR, fill=BOROUGH_GROUP) +
+  geom_bar(stat = "identity", position = "dodge")
+
+boro_comparison_pop
