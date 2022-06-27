@@ -91,6 +91,6 @@ boro_comparison_COVID_tests
 #create a graph comparing the boroughs' populations
 boro_comparison_pop <- ggplot(borough_covid_data) +
   aes(x=BOROUGH_GROUP, y=TOTAL_POP_DENOMINATOR, fill=BOROUGH_GROUP) +
-  geom_bar(stat = "identity", position = "dodge")
+  geom_bar(stat = "identity", position = "dodge") + 
 
 boro_comparison_pop
