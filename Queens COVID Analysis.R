@@ -18,7 +18,7 @@ borough_covid_data <- coronavirus_data %>%
          POP_DENOMINATOR,COVID_CONFIRMED_DEATH_COUNT,COVID_PROBABLE_DEATH_COUNT,
          COVID_DEATH_COUNT, PERCENT_POSITIVE,TOTAL_COVID_TESTS)%>%
   mutate(COUNT_POSITIVE = PERCENT_POSITIVE*.01*TOTAL_COVID_TESTS)%>%
-  group_by(BOROUGH_GROUP) %>% # set up to aggregate by boroough
+  group_by(BOROUGH_GROUP) %>% # set up to aggregate by borough
   summarize(zipcodes=n(), #count of zipcodes in each borough
             TOTAL_COVID_CONFIRMED_CASE_COUNT=sum(COVID_CONFIRMED_CASE_COUNT),
             TOTAL_COVID_PROBABLE_CASE_COUNT=sum(COVID_PROBABLE_CASE_COUNT),
@@ -41,10 +41,16 @@ write_csv(borough_covid_data, "Borough COVID data.csv")
 #create a graph comparing the boroughs' case counts.
 boro_comparison_case_counts <- ggplot(borough_covid_data) +
   aes(x=BOROUGH_GROUP, y=TOTAL_COVID_CASE_COUNT, fill=BOROUGH_GROUP) +
-  # Note these arguments inside 'geom_bar' :
-  ### stat = "identity" allows us to have both an x and y aestethic with our bar graph
-  ### position = "dodge" puts the different colored bars side-by-side
-  geom_bar(stat = "identity", position = "dodge")
+  geom_bar(stat = "identity", position = "dodge") +
+  scale_y_continuous(name="COVID Case Count",labels = scales::unit_format(scale = 1/1000, unit="K")) +
+  scale_x_discrete(name="Borough") +
+  scale_fill_discrete(name="Borough") +
+  labs(
+    title = "Total COVID Case Count by Borough",
+    subtitle = "Data as of July 8th 2022",
+    caption = "Source:https://github.com/nychealth/coronavirus-data") +
+  geom_text(aes(label=TOTAL_COVID_CASE_COUNT), position=position_dodge(width=0.9), vjust=0) +
+  theme(plot.subtitle=element_text(size=9, hjust=0.5))
 
 boro_comparison_case_counts
 
