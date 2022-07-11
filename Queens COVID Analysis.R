@@ -49,7 +49,7 @@ boro_comparison_case_counts <- ggplot(borough_covid_data) +
     title = "Total COVID Case Count by Borough",
     subtitle = "Data as of July 8th 2022",
     caption = "Source:https://github.com/nychealth/coronavirus-data") +
-  geom_text(aes(label=TOTAL_COVID_CASE_COUNT), position=position_dodge(width=0.9), vjust=0) +
+  geom_text(aes(label=scales::comma(TOTAL_COVID_CASE_COUNT)), position=position_dodge(width=0.9), vjust=1.25) +
   theme(plot.subtitle=element_text(size=9, hjust=0.5))
 
 boro_comparison_case_counts
@@ -57,40 +57,80 @@ boro_comparison_case_counts
 #create a graph comparing the boroughs' death counts (probable and confirmed).
 boro_comparison_death_counts <- ggplot(borough_covid_data) +
   aes(x=BOROUGH_GROUP, y=TOTAL_COVID_DEATH_COUNT, fill=BOROUGH_GROUP) +
-  geom_bar(stat = "identity", position = "dodge")
+  geom_bar(stat = "identity", position = "dodge") +  
+  scale_y_continuous(name="COVID Death Count",labels = scales::unit_format(scale = 1/1000, unit="K")) +
+  scale_x_discrete(name="Borough") +
+  scale_fill_discrete(name="Borough") +
+  labs(
+    title = "Total COVID Death Count by Borough",
+    subtitle = "Data as of July 8th 2022",
+    caption = "Source:https://github.com/nychealth/coronavirus-data") +
+  geom_text(aes(label=scales::comma(TOTAL_COVID_DEATH_COUNT)), position=position_dodge(width=0.9), vjust=1.25) +
+  theme(plot.subtitle=element_text(size=9, hjust=0.5))
 
 boro_comparison_death_counts
 
-#create a graph comparing the boroughs' covid positive rate (probable and confirmed).
+#create a graph comparing the boroughs' covid case rate (probable and confirmed).
 boro_comparison_COVID_rates <- ggplot(borough_covid_data) +
   aes(x=BOROUGH_GROUP, y=BOROUGH_COVID_RATE, fill=BOROUGH_GROUP) +
-  geom_bar(stat = "identity", position = "dodge")
+  geom_bar(stat = "identity", position = "dodge")+
+  scale_y_continuous(name="COVID Case Rate",labels = scales::unit_format(scale = 1/1000, unit="K")) +
+  scale_x_discrete(name="Borough") +
+  scale_fill_discrete(name="Borough") +
+  labs(
+    title = "COVID Case Rate (per 100,000 people) by Borough",
+    subtitle = "Data as of July 8th 2022",
+    caption = "Source:https://github.com/nychealth/coronavirus-data") +
+  geom_text(aes(label=scales::comma(round(BOROUGH_COVID_RATE))), position=position_dodge(width=0.9), vjust=1.25) +
+  theme(plot.subtitle=element_text(size=9, hjust=0.5))
+
+boro_comparison_COVID_rates
 
 #create a graph comparing the boroughs' confirmed covid death rate
 boro_comparison_confirmed_COVID_deat_rates <- ggplot(borough_covid_data) +
   aes(x=BOROUGH_GROUP, y=BOROUGH_CONFIRMED_DEATH_RATE, fill=BOROUGH_GROUP) +
-  geom_bar(stat = "identity", position = "dodge")
+  geom_bar(stat = "identity", position = "dodge")+
+  scale_y_continuous(name="Confirmed COVID Death Rate") +
+  scale_x_discrete(name="Borough") +
+  scale_fill_discrete(name="Borough") +
+  labs(
+    title = "Confirmed COVID Death Rate by Borough",
+    subtitle = "Data as of July 8th 2022",
+    caption = "Source:https://github.com/nychealth/coronavirus-data") +
+  geom_text(aes(label=round(BOROUGH_CONFIRMED_DEATH_RATE)), position=position_dodge(width=0.9), vjust=1.25) +
+  theme(plot.subtitle=element_text(size=9, hjust=0.5))
 
 boro_comparison_confirmed_COVID_deat_rates
 
-#create a graph comparing the boroughs' confirmed covid death rate
+#create a graph comparing the boroughs' percentage of covid tests that were positive.
 boro_comparison_COVID_positive_tests <- ggplot(borough_covid_data) +
-  aes(x=BOROUGH_GROUP, y=BOROUGH_PERCENT_POSITIVE, fill=BOROUGH_GROUP) +
-  geom_bar(stat = "identity", position = "dodge")
+  aes(x=BOROUGH_GROUP, y=BOROUGH_PERCENT_POSITIVE, fill=BOROUGH_GROUP, label=scales::percent(round(BOROUGH_PERCENT_POSITIVE, digits=2))) +
+  geom_bar(stat = "identity", position = "dodge") +
+  scale_y_continuous(name="Percent of COVID Tests Positive",labels = scales::percent) +
+  scale_x_discrete(name="Borough") +
+  scale_fill_discrete(name="Borough") +
+  labs(
+    title = "Percent of COVID Tests Positive by Borough",
+    subtitle = "Data as of July 8th 2022",
+    caption = "Source:https://github.com/nychealth/coronavirus-data") +
+  geom_text(position=position_dodge(width=0.9), vjust=1.25) +
+  theme(plot.subtitle=element_text(size=9, hjust=0.5))
 
 boro_comparison_COVID_positive_tests
 
-#create a graph comparing the boroughs' confirmed covid death rate
-boro_comparison_COVID_positive_tests <- ggplot(borough_covid_data) +
-  aes(x=BOROUGH_GROUP, y=BOROUGH_PERCENT_POSITIVE, fill=BOROUGH_GROUP) +
-  geom_bar(stat = "identity", position = "dodge")
-
-boro_comparison_COVID_positive_tests
-
-#create a graph comparing the boroughs' the number of covid tests in each borough
+#create a graph comparing the boroughs' the total number of covid tests in each borough
 boro_comparison_COVID_tests <- ggplot(borough_covid_data) +
   aes(x=BOROUGH_GROUP, y=BOROUGH_COVID_TESTS, fill=BOROUGH_GROUP) +
-  geom_bar(stat = "identity", position = "dodge")
+  geom_bar(stat = "identity", position = "dodge") +
+  scale_y_continuous(name="Number of COVID Tests",labels = scales::unit_format(scale = 1/1000, unit="K")) +
+  scale_x_discrete(name="Borough") +
+  scale_fill_discrete(name="Borough") +
+  labs(
+    title = "Number of COVID Tests by Borough",
+    subtitle = "Data as of July 8th 2022",
+    caption = "Source:https://github.com/nychealth/coronavirus-data") +
+  geom_text(aes(label=scales::comma(BOROUGH_COVID_TESTS)), position=position_dodge(width=0.9), vjust=1.25, size=3) +
+  theme(plot.subtitle=element_text(size=9, hjust=0.5))
 
 boro_comparison_COVID_tests
 
@@ -98,5 +138,14 @@ boro_comparison_COVID_tests
 boro_comparison_pop <- ggplot(borough_covid_data) +
   aes(x=BOROUGH_GROUP, y=TOTAL_POP_DENOMINATOR, fill=BOROUGH_GROUP) +
   geom_bar(stat = "identity", position = "dodge") + 
+  scale_y_continuous(name="Number of People",labels = scales::unit_format(scale = 1/1000, unit="K")) +
+  scale_x_discrete(name="Borough") +
+  scale_fill_discrete(name="Borough") +
+  labs(
+    title = "Population by Borough",
+    subtitle = "Data as of July 8th 2022",
+    caption = "Source:https://github.com/nychealth/coronavirus-data") +
+  geom_text(aes(label=scales::comma(TOTAL_POP_DENOMINATOR)), position=position_dodge(width=0.9), vjust=1.25, size=3) +
+  theme(plot.subtitle=element_text(size=9, hjust=0.5))
 
 boro_comparison_pop
