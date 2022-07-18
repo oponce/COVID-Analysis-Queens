@@ -9,7 +9,7 @@ library(janitor)
 #installs your API key. 
 census_api_key("14460ee241461082fa6220bb2acb9a2ca9b85fb8", install = TRUE, overwrite=TRUE)
 
-#view variables for the ACS 2013-2017 files. 
+#view variables for the ACS 2013 files. 
 v13 <- load_variables(2013, "acs1", cache=TRUE)
 
 #load the unweighted sample count of the population.
@@ -44,3 +44,12 @@ demography13 <- get_acs(geography = "county",
                                         ),
                           year = 2013,
                           survey = "acs1")
+
+#view variables for the ACS 2014 file. 
+v14 <- load_variables(2014, "acs1", cache=TRUE)
+
+#view variables for the ACS 2019 file.
+v19 <- load_variables(2019, "acs1", cache=TRUE)
+
+#view variables for the ACS 2020 file.
+v21 <- load_variables(2021, "acs1", cache=TRUE)
