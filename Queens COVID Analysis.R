@@ -1,14 +1,20 @@
 #import necessary libraries.
 library('tidyverse')
 library('janitor')
+library('dplyr')
 
 #read the corona virus data by zipcode csv data file. 
 coronavirus_data <- read_csv('data-by-modzcta.csv')
 
-#Comparison of Queens neighborhoods. 
+#Comparison of Queens neighborhoods, sort descending by confirmed covid case count. 
 queens_covid_data <- coronavirus_data %>%
   filter(BOROUGH_GROUP=="Queens")%>%
-  mutate(COUNT_POSITIVE = PERCENT_POSITIVE*.01*TOTAL_COVID_TESTS)
+  mutate(COUNT_POSITIVE = PERCENT_POSITIVE*.01*TOTAL_COVID_TESTS)%>%
+  arrange(desc(COVID_CONFIRMED_CASE_COUNT))
+
+#select the first 10 rows of the dataset for comparison via confirmed covid case count. 
+
+
 
 #Borough comparisons:select certain rows, calculate the number of positive covid tests,
 #aggregate the data by borough, and compute certain calculations. 
