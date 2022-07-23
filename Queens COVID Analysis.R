@@ -12,10 +12,28 @@ queens_covid_data <- coronavirus_data %>%
   mutate(COUNT_POSITIVE = PERCENT_POSITIVE*.01*TOTAL_COVID_TESTS)%>%
   arrange(desc(COVID_CONFIRMED_CASE_COUNT))
 
-#select the first 10 rows of the dataset for comparison via confirmed covid case count. 
+#select the first 10 rows of the dataset for comparison across confirmed covid case count. 
+top10_confirmed_covid <- queens_covid_data[1:10,]
 
+#arrange the queens covid dataset by covid confirmed death count. 
+queens_covid_data <- queens_covid_data %>% arrange(desc(COVID_CONFIRMED_DEATH_COUNT))
 
+#select the first 10 rows of the dataset for comparison across confirmed covid death count. 
+top10_confirmed_covid_death <- queens_covid_data[1:10,]
 
+#arrange the queens covid dataset by covid case rate. 
+queens_covid_data <- queens_covid_data %>% arrange(desc(COVID_CASE_RATE))
+
+#select the first 10 rows of the dataset for comparison across covid case rate. 
+top10_covid_case_rate <- queens_covid_data[1:10,]
+
+#arrange the queens covid dataset by total covid tests. 
+queens_covid_data <- queens_covid_data %>% arrange(desc(TOTAL_COVID_TESTS))
+
+#select the first 10 rows of the dataset for comparison across confirmed covid death count. 
+top10_total_covid_tests <- queens_covid_data[1:10,]
+
+##########################################################################################################
 #Borough comparisons:select certain rows, calculate the number of positive covid tests,
 #aggregate the data by borough, and compute certain calculations. 
 borough_covid_data <- coronavirus_data %>% 

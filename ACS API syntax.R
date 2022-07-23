@@ -12,32 +12,8 @@ census_api_key("14460ee241461082fa6220bb2acb9a2ca9b85fb8", install = TRUE, overw
 #view variables for the ACS 2013 files. 
 v13 <- load_variables(2013, "acs1", cache=TRUE)
 
-#load the unweighted sample count of the population.
-unweighted_pop <- get_acs(geography = "county", 
-                          variables = "B00001_001",
-                          year = 2013,
-                          survey = "acs1")
-
-#load various demographic variables for the ACS 2019.
-demography19 <- get_acs(geography = "county", 
-                          variables = c(employment16plus= "B23001_001", #EMPLOYMENT STATUS FOR THE POPULATION 16 YEARS AND OVER
-                                        employment16pluswhite="B23002A_001", #EMPLOYMENT STATUS FOR THE POPULATION 16 YEARS AND OVER (WHITE ONLY)
-                                        employment16plusblack="B23002B_001", #EMPLOYMENT STATUS FOR THE POPULATION 16 YEARS AND OVER (BLACK ONLY)
-                                        employment16plusAIAN="B23002C_001",  #EMPLOYMENT STATUS FOR THE POPULATION 16 YEARS AND OVER (American Indian & Alaskan Native ONLY)
-                                        employment16plusasian="B23002D_001", #EMPLOYMENT STATUS FOR THE POPULATION 16 YEARS AND OVER (ASIAN ONLY)
-                                        employment16plusNHPI="B23002E_001",  #EMPLOYMENT STATUS FOR THE POPULATION 16 YEARS AND OVER (Native Hawaiian or Pacific Islander ONLY)
-                                        employment16plusother="B23002F_001", #EMPLOYMENT STATUS FOR THE POPULATION 16 YEARS AND OVER (Some other race ONLY)
-                                        employment16plus2ormore="B23002G_001", #EMPLOYMENT STATUS FOR THE POPULATION 16 YEARS AND OVER (TWO OR MORE RACES)
-                                        employment16pluswhiteNH="B23002H_001", #EMPLOYMENT STATUS FOR THE POPULATION 16 YEARS AND OVER (non hispanic white only)
-                                        employment16plusHSL="B23002I_001"     #EMPLOYMENT STATUS FOR THE POPULATION 16 YEARS AND OVER (HISPANIC or LATINO ONLY)
-                                        education
-                                        
-                                        ),
-                          year = 2019,
-                          survey = "acs1")
-#filter the newly created dataset to include only New York State county data. 
-
-#transform data from long to wide. 
+#write CSV for 2013 variable information
+write_csv(v13, "ACS 2013 variable list.csv")
 
 #load various demographic variables for the ACS 2013.
 demography13 <- get_acs(geography = "county", 
@@ -61,10 +37,33 @@ demography13 <- get_acs(geography = "county",
                                       total_male_NH_white="B01001H_002",
                                       total_female_NH_white="B01001H_017",
                                       total_male_HL="B01001I_002",
-                                      total_female_HL="B01001I_017"
-                        ),
+                                      total_female_HL="B01001I_017"),
                         year = 2013,
                         survey = "acs1")
+
+
+#load various demographic variables for the ACS 2019.
+demography19 <- get_acs(geography = "county", 
+                          variables = c(employment16plus= "B23001_001", #EMPLOYMENT STATUS FOR THE POPULATION 16 YEARS AND OVER
+                                        employment16pluswhite="B23002A_001", #EMPLOYMENT STATUS FOR THE POPULATION 16 YEARS AND OVER (WHITE ONLY)
+                                        employment16plusblack="B23002B_001", #EMPLOYMENT STATUS FOR THE POPULATION 16 YEARS AND OVER (BLACK ONLY)
+                                        employment16plusAIAN="B23002C_001",  #EMPLOYMENT STATUS FOR THE POPULATION 16 YEARS AND OVER (American Indian & Alaskan Native ONLY)
+                                        employment16plusasian="B23002D_001", #EMPLOYMENT STATUS FOR THE POPULATION 16 YEARS AND OVER (ASIAN ONLY)
+                                        employment16plusNHPI="B23002E_001",  #EMPLOYMENT STATUS FOR THE POPULATION 16 YEARS AND OVER (Native Hawaiian or Pacific Islander ONLY)
+                                        employment16plusother="B23002F_001", #EMPLOYMENT STATUS FOR THE POPULATION 16 YEARS AND OVER (Some other race ONLY)
+                                        employment16plus2ormore="B23002G_001", #EMPLOYMENT STATUS FOR THE POPULATION 16 YEARS AND OVER (TWO OR MORE RACES)
+                                        employment16pluswhiteNH="B23002H_001", #EMPLOYMENT STATUS FOR THE POPULATION 16 YEARS AND OVER (non hispanic white only)
+                                        employment16plusHSL="B23002I_001"     #EMPLOYMENT STATUS FOR THE POPULATION 16 YEARS AND OVER (HISPANIC or LATINO ONLY)
+                                        education
+                                        
+                                        ),
+                          year = 2019,
+                          survey = "acs1")
+#filter the newly created dataset to include only New York State county data. 
+
+#transform data from long to wide. 
+
+
 
 #view variables for the ACS 2014 file. 
 v14 <- load_variables(2014, "acs1", cache=TRUE)
