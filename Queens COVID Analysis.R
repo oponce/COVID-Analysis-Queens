@@ -15,11 +15,17 @@ queens_covid_data <- coronavirus_data %>%
 #select the first 10 rows of the dataset for comparison across confirmed covid case count. 
 top10_confirmed_covid <- queens_covid_data[1:10,]
 
+#write CSV of the top 10 confirmed covid.
+write_csv(top10_confirmed_covid, "Top 10 Queens Neighborhoods Confirmed COVID.csv")
+
 #arrange the queens covid dataset by covid confirmed death count. 
 queens_covid_data <- queens_covid_data %>% arrange(desc(COVID_CONFIRMED_DEATH_COUNT))
 
 #select the first 10 rows of the dataset for comparison across confirmed covid death count. 
 top10_confirmed_covid_death <- queens_covid_data[1:10,]
+
+#write CSV of the top 10 confirmed covid death.
+write_csv(top10_confirmed_covid_death, "Top 10 Queens Neighborhoods Confirmed COVID Deaths.csv")
 
 #arrange the queens covid dataset by covid case rate. 
 queens_covid_data <- queens_covid_data %>% arrange(desc(COVID_CASE_RATE))
@@ -27,11 +33,17 @@ queens_covid_data <- queens_covid_data %>% arrange(desc(COVID_CASE_RATE))
 #select the first 10 rows of the dataset for comparison across covid case rate. 
 top10_covid_case_rate <- queens_covid_data[1:10,]
 
+#write CSV of the top 10 confirmed covid case rate.
+write_csv(top10_covid_case_rate, "Top 10 Queens Neighborhoods COVID Case Rate.csv")
+
 #arrange the queens covid dataset by total covid tests. 
 queens_covid_data <- queens_covid_data %>% arrange(desc(TOTAL_COVID_TESTS))
 
 #select the first 10 rows of the dataset for comparison across confirmed covid death count. 
 top10_total_covid_tests <- queens_covid_data[1:10,]
+
+#write CSV of the top 10 total covid tests.
+write_csv(top10_total_covid_tests, "Top 10 Queens Neighborhoods TOtal COVID Tests.csv")
 
 ##########################################################################################################
 #Borough comparisons:select certain rows, calculate the number of positive covid tests,
