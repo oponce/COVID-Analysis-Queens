@@ -1,0 +1,86 @@
+GEOID,NAME,variable,estimate,moe
+36005,"Bronx County, New York",educationHSdiploma,224786,8309
+36005,"Bronx County, New York",educationGED,47088,4207
+36005,"Bronx County, New York",educationassociates,72701,5958
+36005,"Bronx County, New York",educationbachelors,118282,5711
+36005,"Bronx County, New York",educationmasters,55234,4391
+36005,"Bronx County, New York",educationprofessionaldegree,11134,1835
+36005,"Bronx County, New York",educationdoctorate,5525,1115
+36005,"Bronx County, New York",employment16plus,1110356,2089
+36005,"Bronx County, New York",employment16pluswhite,263849,9962
+36005,"Bronx County, New York",employment16plusblack,424719,9837
+36005,"Bronx County, New York",employment16plusAIAN,NA,NA
+36005,"Bronx County, New York",employment16plusasian,43442,1742
+36005,"Bronx County, New York",employment16plusNHPI,NA,NA
+36005,"Bronx County, New York",employment16plusother,325045,12911
+36005,"Bronx County, New York",employment16plus2ormore,45892,5619
+36005,"Bronx County, New York",employment16pluswhiteNH,106978,1349
+36005,"Bronx County, New York",employment16plusHSL,608435,1851
+36047,"Kings County, New York",educationHSdiploma,407500,11057
+36047,"Kings County, New York",educationGED,64667,4209
+36047,"Kings County, New York",educationassociates,103381,4992
+36047,"Kings County, New York",educationbachelors,419822,7997
+36047,"Kings County, New York",educationmasters,205445,7316
+36047,"Kings County, New York",educationprofessionaldegree,51249,3840
+36047,"Kings County, New York",educationdoctorate,20400,1998
+36047,"Kings County, New York",employment16plus,2037012,2211
+36047,"Kings County, New York",employment16pluswhite,885790,8484
+36047,"Kings County, New York",employment16plusblack,663512,5360
+36047,"Kings County, New York",employment16plusAIAN,NA,NA
+36047,"Kings County, New York",employment16plusasian,252835,3478
+36047,"Kings County, New York",employment16plusNHPI,NA,NA
+36047,"Kings County, New York",employment16plusother,169873,9077
+36047,"Kings County, New York",employment16plus2ormore,58697,4722
+36047,"Kings County, New York",employment16pluswhiteNH,741595,2007
+36047,"Kings County, New York",employment16plusHSL,373550,1217
+36061,"New York County, New York",educationHSdiploma,128602,9105
+36061,"New York County, New York",educationGED,30275,4529
+36061,"New York County, New York",educationassociates,43093,4444
+36061,"New York County, New York",educationbachelors,403257,11555
+36061,"New York County, New York",educationmasters,231297,9880
+36061,"New York County, New York",educationprofessionaldegree,94008,6348
+36061,"New York County, New York",educationdoctorate,47062,4361
+36061,"New York County, New York",employment16plus,1418947,1792
+36061,"New York County, New York",employment16pluswhite,817859,10051
+36061,"New York County, New York",employment16plusblack,197221,5489
+36061,"New York County, New York",employment16plusAIAN,NA,NA
+36061,"New York County, New York",employment16plusasian,185437,2216
+36061,"New York County, New York",employment16plusNHPI,NA,NA
+36061,"New York County, New York",employment16plusother,162108,10130
+36061,"New York County, New York",employment16plus2ormore,NA,NA
+36061,"New York County, New York",employment16pluswhiteNH,687558,1759
+36061,"New York County, New York",employment16plusHSL,344350,1198
+36081,"Queens County, New York",educationHSdiploma,384875,11031
+36081,"Queens County, New York",educationGED,61667,3775
+36081,"Queens County, New York",educationassociates,130799,6324
+36081,"Queens County, New York",educationbachelors,334272,9966
+36081,"Queens County, New York",educationmasters,157559,6512
+36081,"Queens County, New York",educationprofessionaldegree,33444,3583
+36081,"Queens County, New York",educationdoctorate,16621,2030
+36081,"Queens County, New York",employment16plus,1851947,2207
+36081,"Queens County, New York",employment16pluswhite,686944,11886
+36081,"Queens County, New York",employment16plusblack,341371,4333
+36081,"Queens County, New York",employment16plusAIAN,NA,NA
+36081,"Queens County, New York",employment16plusasian,493746,4519
+36081,"Queens County, New York",employment16plusNHPI,NA,NA
+36081,"Queens County, New York",employment16plusother,255723,12044
+36081,"Queens County, New York",employment16plus2ormore,62729,7543
+36081,"Queens County, New York",employment16pluswhiteNH,472898,2441
+36081,"Queens County, New York",employment16plusHSL,494341,1271
+36085,"Richmond County, New York",educationHSdiploma,81873,5195
+36085,"Richmond County, New York",educationGED,15386,2082
+36085,"Richmond County, New York",educationassociates,24334,2290
+36085,"Richmond County, New York",educationbachelors,71914,5727
+36085,"Richmond County, New York",educationmasters,38688,3546
+36085,"Richmond County, New York",educationprofessionaldegree,7192,1370
+36085,"Richmond County, New York",educationdoctorate,2995,934
+36085,"Richmond County, New York",employment16plus,384837,1353
+36085,"Richmond County, New York",employment16pluswhite,286124,3725
+36085,"Richmond County, New York",employment16plusblack,36875,1630
+36085,"Richmond County, New York",employment16plusAIAN,NA,NA
+36085,"Richmond County, New York",employment16plusasian,41937,1360
+36085,"Richmond County, New York",employment16plusNHPI,NA,NA
+36085,"Richmond County, New York",employment16plusother,NA,NA
+36085,"Richmond County, New York",employment16plus2ormore,NA,NA
+36085,"Richmond County, New York",employment16pluswhiteNH,237596,1009
+36085,"Richmond County, New York",employment16plusHSL,64917,761

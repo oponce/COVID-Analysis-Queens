@@ -5,8 +5,8 @@ library('dplyr')
 
 #read the corona virus data by zipcode csv data file. 
 coronavirus_data <- read_csv('data-by-modzcta.csv')
-
-#Comparison of Queens neighborhoods, sort descending by confirmed covid case count. 
+################################################################################################
+#Comparison of Queens' neighborhoods, sort descending by confirmed covid case count. 
 queens_covid_data <- coronavirus_data %>%
   filter(BOROUGH_GROUP=="Queens")%>%
   mutate(COUNT_POSITIVE = PERCENT_POSITIVE*.01*TOTAL_COVID_TESTS)%>%

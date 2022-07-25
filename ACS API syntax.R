@@ -1,4 +1,4 @@
-#install tidy verse.
+#install tidycensus.
 install.packages("tidycensus")
 
 #load the necessary libraries.
@@ -6,7 +6,7 @@ library(tidycensus)
 library(tidyverse)
 library(janitor)
 
-#installs your API key. 
+#install your API key (register online). 
 census_api_key("14460ee241461082fa6220bb2acb9a2ca9b85fb8", install = TRUE, overwrite=TRUE)
 
 #view variables for the ACS 2013 files. 
@@ -41,8 +41,10 @@ demography13 <- get_acs(geography = "county",
                         year = 2013,
                         survey = "acs1")
 
+#view variables for the ACS 2019 file.
+v19 <- load_variables(2019, "acs1", cache=TRUE)
 
-#load various demographic variables for the ACS 2019.
+#load various employment/labor variables for the ACS 2019.
 demography19 <- get_acs(geography = "county", 
                           variables = c(employment16plus= "B23001_001", #EMPLOYMENT STATUS FOR THE POPULATION 16 YEARS AND OVER
                                         employment16pluswhite="B23002A_001", #EMPLOYMENT STATUS FOR THE POPULATION 16 YEARS AND OVER (WHITE ONLY)
@@ -53,23 +55,26 @@ demography19 <- get_acs(geography = "county",
                                         employment16plusother="B23002F_001", #EMPLOYMENT STATUS FOR THE POPULATION 16 YEARS AND OVER (Some other race ONLY)
                                         employment16plus2ormore="B23002G_001", #EMPLOYMENT STATUS FOR THE POPULATION 16 YEARS AND OVER (TWO OR MORE RACES)
                                         employment16pluswhiteNH="B23002H_001", #EMPLOYMENT STATUS FOR THE POPULATION 16 YEARS AND OVER (non hispanic white only)
-                                        employment16plusHSL="B23002I_001"     #EMPLOYMENT STATUS FOR THE POPULATION 16 YEARS AND OVER (HISPANIC or LATINO ONLY)
-                                        education
-                                        
+                                        employment16plusHSL="B23002I_001",     #EMPLOYMENT STATUS FOR THE POPULATION 16 YEARS AND OVER (HISPANIC or LATINO ONLY)
+                                        educationHSdiploma="B15003_017", #EDUCATIONAL ATTAINMENT (HIGH SCHOOL DEGREE) FOR THE POPULATION 25 YEARS AND OVER
+                                        educationGED="B15003_018", #EDUCATIONAL ATTAINMENT (GED) FOR THE POPULATION 25 YEARS AND OVER
+                                        educationassociates="B15003_021", #EDUCATIONAL ATTAINMENT (associates) FOR THE POPULATION 25 YEARS AND OVER
+                                        educationbachelors="B15003_022",
+                                        educationmasters="B15003_023",
+                                        educationprofessionaldegree="B15003_024",
+                                        educationdoctorate="B15003_025"
                                         ),
                           year = 2019,
                           survey = "acs1")
-#filter the newly created dataset to include only New York State county data. 
 
-#transform data from long to wide. 
+#filter the newly created dataset to include only New York CIty data. 
+NYC_demography19 <- demography19%>% filter(NAME=="Kings County, New York" | NAME=="Queens County, New York" | NAME=="Bronx County, New York" | NAME=="New York County, New York" |NAME=="Richmond County, New York")
 
-
+#write CSV for 2019 New York City  information
+write_csv(NYC_demography19, "NYC Employment and Education Data.csv")
 
 #view variables for the ACS 2014 file. 
 v14 <- load_variables(2014, "acs1", cache=TRUE)
-
-#view variables for the ACS 2019 file.
-v19 <- load_variables(2019, "acs1", cache=TRUE)
 
 #view variables for the ACS 2021 file.
 v21 <- load_variables(2021, "acs1", cache=TRUE)
