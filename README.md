@@ -1,7 +1,7 @@
 # COVID Analysis Queens
 MSPP Policy and Data Studio project
 
-This folder contains COVID-19 CSV data files providing cumulative totals of cases and deaths since the start of the COVID-19 outbreak in NYC, which the Health Department defines as the diagnosis of the first confirmed COVID-19 case on February 29, 2020. Additionally, this folder houses R script files used to analyze the "data by zipcode" CSV file to provide borough breakouts of case counts, deaths, and positive covid tests. 
+This folder contains COVID-19 CSV data files providing cumulative totals of cases and deaths since the start of the COVID-19 outbreak in NYC, which the Health Department defines as the diagnosis of the first confirmed COVID-19 case on February 29, 2020. This folder houses R script files used to analyze the "data by zipcode" CSV file to provide borough breakouts of case counts, deaths, and positive covid tests. Additionally, this folder contains an R script file with instructions on how to access the United States Census API and extract American Community Survey data. 
 
 # data-by-modzcta.csv   
 

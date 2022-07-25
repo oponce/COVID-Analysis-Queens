@@ -12,7 +12,7 @@ queens_covid_data <- coronavirus_data %>%
   mutate(COUNT_POSITIVE = PERCENT_POSITIVE*.01*TOTAL_COVID_TESTS)%>%
   arrange(desc(COVID_CONFIRMED_CASE_COUNT))
 
-#write CSV of the queens covid data file to utilize in QGIS. 
+#write CSV of the queens covid data file to potentially utilize in QGIS. 
 write_csv(queens_covid_data, "Queens COVID Data.csv")
 
 #select the first 10 rows of the dataset for comparison across confirmed covid case count. 
